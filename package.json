@@ -1,0 +1,19 @@
+{
+  "name": "fresio",
+  "version": "1.0.0",
+  "description": "Fres.io website for the support of the company known as Fres.io",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spirovanni/fres.io.git"
+  },
+  "author": "Xavier Martinez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Spirovanni/fres.io/issues"
+  },
+  "homepage": "https://github.com/Spirovanni/fres.io#readme"
+}
