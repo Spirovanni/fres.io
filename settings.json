@@ -1,0 +1,7 @@
+{ "galaxy.meteor.com":
+  { "env": {
+    "ROOT_URL": "HTTP://fresio.meteorapp.com",
+    "MONGO_URL": "mongodb://fresio:Ravenna9@ds011913.mlab.com:11913/fresio"
+    }
+  }
+}
