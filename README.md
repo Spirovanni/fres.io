@@ -1,5 +1,15 @@
 # fres.io
 
+## Add & Commit
+
+### git add *
+
+### git commit -m "Commit message"
+
+### git push origin feature_x
+
+### git push origin master
+
 ## create a new repository on the command line
 
 echo "# fres.io" >> README.md
