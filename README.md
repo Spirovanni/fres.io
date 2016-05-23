@@ -10,6 +10,8 @@
 
 ### git push origin master
 
+### DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy fresio.meteorapp.com --settings settings.json
+
 ## create a new repository on the command line
 
 echo "# fres.io" >> README.md
