@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouteParams, RouterLink } from '@angular/router-deprecated';
 import {Parties} from '../../../collections/parties.ts';
 import { Meteor } from 'meteor/meteor';
-import { RequireUser } from 'angular2-meteor-accounts-ui';
+import { RequireUser, InjectUser } from 'angular2-meteor-accounts-ui';
 import {CanActivate, ComponentInstruction} from '@angular/router-deprecated';
 import { MeteorComponent } from 'angular2-meteor';
 import { DisplayName } from '../pipes/pipes.ts';
 import { Mongo } from 'meteor/mongo';
+import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES, MouseEvent} from 'angular2-google-maps/core';
 
 function checkPermissions(instruction: ComponentInstruction) {
     var partyId = instruction.params['partyId'];
@@ -17,14 +18,19 @@ function checkPermissions(instruction: ComponentInstruction) {
 @Component({
     selector: 'party-details',
     templateUrl: '/client/imports/party-details/party-details.html',
-    directives: [RouterLink],
+    directives: [RouterLink, ANGULAR2_GOOGLE_MAPS_DIRECTIVES],
     pipes: [DisplayName]
 })
 @RequireUser()
+@InjectUser()
 @CanActivate(checkPermissions)
 export class PartyDetails extends MeteorComponent {
     party: Party;
     users: Mongo.Cursor<Object>;
+    user: Meteor.User;
+    // Default center Palo Alto coordinates.
+    centerLat: Number = 37.4292;
+    centerLng: Number = -122.1381;
 
     constructor(params: RouteParams) {
         super();
@@ -87,5 +93,43 @@ export class PartyDetails extends MeteorComponent {
                 alert('You successfully replied.');
             }
         });
+    }
+
+    get isOwner(): boolean {
+        if (this.party && this.user) {
+            return this.user._id === this.party.owner;
+        }
+
+        return false;
+    }
+
+    get isPublic(): boolean {
+        if (this.party) {
+            return this.party.public;
+        }
+
+        return false;
+    }
+
+    get isInvited(): boolean {
+        if (this.party && this.user) {
+            let invited = this.party.invited || [];
+            return invited.indexOf(this.user._id) !== -1;
+        }
+
+        return false;
+    }
+
+    get lat(): Number {
+        return this.party && this.party.location.lat;
+    }
+
+    get lng(): Number {
+        return this.party && this.party.location.lng;
+    }
+
+    mapClicked($event: MouseEvent) {
+        this.party.location.lat = $event.coords.lat;
+        this.party.location.lng = $event.coords.lng;
     }
 }

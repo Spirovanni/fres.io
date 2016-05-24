@@ -33,7 +33,9 @@ export class PartiesForm extends MeteorComponent {
                 Parties.insert(<Party>{
                     name: party.name,
                     description: party.description,
-                    location: party.location,
+                    location: {
+                        name: party.location
+                    },
                     'public': party.public,
                     owner: Meteor.userId()
                 });

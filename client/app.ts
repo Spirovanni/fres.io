@@ -7,11 +7,13 @@ import { APP_BASE_HREF } from '@angular/common';
 import { PartiesList } from './imports/parties-list/parties-list.ts';
 import { PartyDetails } from './imports/party-details/party-details.ts';
 import '../collections/methods.ts';
+import {ANGULAR2_GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
+import {LoginButtons} from 'angular2-meteor-accounts-ui';
 
 @Component({
     selector: 'app',
     template: '<router-outlet></router-outlet>',
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, LoginButtons]
 })
 @RouteConfig([
     { path: '/', as: 'PartiesList', component: PartiesList },
@@ -19,4 +21,4 @@ import '../collections/methods.ts';
 ])
 class Socially {}
 
-bootstrap(Socially, [ROUTER_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
+bootstrap(Socially, [ROUTER_PROVIDERS, ANGULAR2_GOOGLE_MAPS_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
