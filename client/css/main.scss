@@ -1,7 +1,8 @@
+@charset "UTF-8";
 @import "../../node_modules/angular2-meteor-accounts-ui/build/login-buttons.scss";
 @import "../../node_modules/angular2-pagination/build/pagination-controls-cmp.scss";
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
-
+@import "../../node_modules/ng2-material/all.scss";
+//@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 $color1 : #2F2933;
 $color2 : #01A2A6;
@@ -11,37 +12,45 @@ $color5 : #FFFFA6;
 $color6 : #2F2933;
 $color7 : #FF6F69;
 
-html, body {
-  height: 100%;
-}
+// Variables;
+@import "theme-components/variables";
 
-body {
-  background-color: #f8f8f8;
-  font-family: 'Muli', sans-serif;
-}
+// Components
+@import "theme-components/global";
+@import "theme-components/typography";
+@import "theme-components/preloader";
+@import "theme-components/header";
 
-.sebm-google-map-container {
-  width: 450px;
-  height: 450px;
-}
+@import "theme-components/sidebar";
+@import "theme-components/slideout";
 
-.navbar {
-  background-color: #ffffff;
-  border-bottom: #eee 1px solid;
-  color: $color3;
-  font-family: 'Muli', sans-serif;
-  a {
-    color: $color3;
-    text-decoration: none !important;
-  }
+@import "theme-components/breadcrumb";
+@import "theme-components/table";
+@import "theme-components/card";
+@import "theme-components/chart";
+@import "theme-components/calendar";
 
-  .navbar-right-container {
-    position: absolute;
-    top: 17px;
-    right: 17px;
-  }
-}
+// Miscellaneous
+@import "theme-components/miscellaneous";
 
-@import "../imports/parties-list/parties-list.scss";
-@import "../imports/party-details/party-details.scss";
+// Pages
+@import "theme-components/pages/icon";
+@import "theme-components/pages/error";
+@import "theme-components/pages/login";
+@import "theme-components/pages/email";
+@import "theme-components/pages/blog";
+@import "theme-components/pages/invoice";
+@import "theme-components/pages/product";
+@import "theme-components/pages/gallary";
+@import "theme-components/pages/map";
+@import "theme-components/pages/plan";
+@import "theme-components/pages/profile";
+
+// Footer
+@import "theme-components/footer";
+
+@import "../imports/parties/parties-list/parties-list.scss";
+@import "../imports/parties/party-details/party-details.scss";
+@import "../imports/base/base-footer/base-footer";
+@import "../imports/base/base-nav/base-nav";
 
